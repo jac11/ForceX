@@ -7,7 +7,7 @@ import (
     "log"
     "net"
     "os"
-  //  "time"
+    //"strings"
     "github.com/jlaffaye/ftp"
 )
 
@@ -78,13 +78,17 @@ func (ArgVar *ArgVar) FTPConnect() (string, string) {
     }
     var user, pass string
     DomainNet := net.JoinHostPort(ArgVar.Address, ArgVar.Port)
+
+    //argsuser-argspass
     if ArgVar.PassList  == "" && ArgVar.UserList == ""{
         connect, err := ftp.Dial(DomainNet)
         err = connect.Login(ArgVar.User,ArgVar.Pass)
         if err == nil {
             return ArgVar.User ,ArgVar.Pass
         }
-    }else if ArgVar.User !="" && ArgVar.PassList ==""{
+
+    //username -passwordlist    
+    }else if ArgVar.User !="" && ArgVar.PassList !=""{
         for _, pass = range PassWords {
             connect, err := ftp.Dial(DomainNet)
             if err != nil {
@@ -93,11 +97,13 @@ func (ArgVar *ArgVar) FTPConnect() (string, string) {
             defer connect.Quit()
             err = connect.Login(ArgVar.User, pass)
             if err == nil {
-                return user, pass
+                return ArgVar.User, pass
             }
         }
-    }else if ArgVar.PassList =="" && ArgVar.User!=""{
-        for _, user = range PassWords {
+
+    //userlist-argpass  
+    }else if ArgVar.Pass !="" && ArgVar.UserList!=""{
+        for _, user = range UserName {
             connect, err := ftp.Dial(DomainNet)
             if err != nil {
                 continue
@@ -105,29 +111,33 @@ func (ArgVar *ArgVar) FTPConnect() (string, string) {
             defer connect.Quit()
             err = connect.Login(user,ArgVar.Pass)
             if err == nil {
-                return user, pass
+                return user, ArgVar.Pass
             }
         }
 
-    }else if ArgVar.PassList !="" && ArgVar.UserList!="" {
-        for U :=0 ; U >= len(UserName); U++ {
-            for _, pass = range PassWords {
+    } else if ArgVar.PassList != "" && ArgVar.UserList != "" {
+        for _, user := range UserName {
+            for _, pass := range PassWords {
                 connect, err := ftp.Dial(DomainNet)
                 if err != nil {
+                    fmt.Println(user)
+                    fmt.Println(pass)
                     continue
                 }
+                
                 defer connect.Quit()
-                err = connect.Login(UserName[U], pass)
-                fmt.Println(user)
-                fmt.Println(pass)
+                err = connect.Login(user, pass)
                 if err == nil {
                     return user, pass
-                    }
                 }
+            
             }
-        }        
-    return "", ""  
+        }
+    }
+
+    return "", ""
 }
+
 
 func main() {
     Banner:=Logo()
