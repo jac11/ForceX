@@ -1,12 +1,12 @@
 package main
 
 import (
-	"bufio"
+   "bufio"
     "log"
     "net"
     "os"
-	"golang.org/x/crypto/ssh"
-	"fmt"
+    "golang.org/x/crypto/ssh"
+    "fmt"
 )
 
 func IUsserPAss(ArgVar *ArgVar) ([]string, []string) {
