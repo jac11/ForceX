@@ -43,7 +43,7 @@ func main() {
         if user != "" && pass != "" {
             fmt.Println("FTP Successful login:", user, pass)
         }else {
-            fmt.Println("No successful login found.")
+            fmt.Println("FTP No successful login found.")
         }
     case "ssh":
         user,pass := ArgVar.SSHConnect()
