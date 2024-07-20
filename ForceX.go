@@ -1,14 +1,8 @@
 package main
 
 import (
-   // "bufio"
     "flag"
     "fmt"
-//   "log"
-//    "net"
-  //  "os"
-    //"strings"
-   // "github.com/jlaffaye/ftp"
 )
 
 type ArgVar struct {
@@ -22,6 +16,7 @@ type ArgVar struct {
     Sleep     string
     Wordpress string
 }
+
 
 func (Argv *ArgVar) ParseArgs() {
     flag.StringVar(&Argv.Address, "Address", "", "IP/Domain Target BruteForce")
@@ -38,14 +33,25 @@ func (Argv *ArgVar) ParseArgs() {
 
 
 func main() {
+     var ArgVar ArgVar 
     Banner:=Logo()
     fmt.Println(Banner)
-    var ArgVar ArgVar
     ArgVar.ParseArgs()
-    user, pass := ArgVar.FTPConnect()
-    if user != "" && pass != "" {
-        fmt.Println("Successful login:", user, pass)
-    } else {
-        fmt.Println("No successful login found.")
-    }
+    switch ArgVar.Protocol {
+    case "ftp":
+        user, pass := ArgVar.FTPConnect()
+        if user != "" && pass != "" {
+            fmt.Println("Successful login:", user, pass)
+        }else {
+            fmt.Println("No successful login found.")
+        }
+    case "ssh":
+        user,pass := ArgVar.SSHConnect()
+        if user != "" && pass != "" {
+            fmt.Println("SSH Successful login:", user, pass)
+        }else {
+            fmt.Println("SSH No successful login found.")
+        }
+    } 
+   
 }

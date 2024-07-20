@@ -2,12 +2,9 @@ package main
 
 import (
     "bufio"
-    //"flag"
-    "fmt"
     "log"
     "net"
     "os"
-    //"strings"
     "github.com/jlaffaye/ftp"
 )
 
@@ -94,8 +91,6 @@ func (ArgVar *ArgVar) FTPConnect() (string, string) {
             for _, pass := range PassWords {
                 connect, err := ftp.Dial(DomainNet)
                 if err != nil {
-                    fmt.Println(user)
-                    fmt.Println(pass)
                     continue
                 }
                 
