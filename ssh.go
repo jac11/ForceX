@@ -1,10 +1,11 @@
 package main
 
 import (
+	
 	"bufio"
-    "log"
-    "net"
-    "os"
+       "log"
+       "net"
+        "os"
 	"golang.org/x/crypto/ssh"
 	"fmt"
 )
@@ -133,6 +134,6 @@ func (ArgVar *ArgVar) SSHConnect()(string,string){
     		}
     	}
     		
-   	}   
+   }   
     return "" ,""
 }
