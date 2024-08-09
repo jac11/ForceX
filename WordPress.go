@@ -1,12 +1,12 @@
 package main
 import (
-	"fmt"
-	"io/ioutil"
-	"net/http"
+    "fmt"
+    "io/ioutil"
+    "net/http"
     "net/http/cookiejar"
-	"net/url"
-	"strings"
-	"bufio"
+    "net/url"
+    "strings"
+    "bufio"
     "log"
     "os"
 )
@@ -169,8 +169,8 @@ func (ArgVar *ArgVar)WordpressLogin()(string,string){
 						csrfToken = bodyStr[start : start+end]
 					}
 				}
-	    		fmt.Println(index)
-		    	data := url.Values{}
+	    		        fmt.Println(index)
+		    	        data := url.Values{}
 				data.Set("log", ArgVar.User)
 				data.Set("pwd", Passlog[index])
 				data.Set("wp-submit", "Log In")
@@ -245,8 +245,8 @@ func (ArgVar *ArgVar)WordpressLogin()(string,string){
 						csrfToken = bodyStr[start : start+end]
 					}
 				}
-	    		fmt.Println(index)
-		    	data := url.Values{}
+	    		        fmt.Println(index)
+		    	        data := url.Values{}
 				data.Set("log", UserLog[index])
 				data.Set("pwd", ArgVar.Pass)
 				data.Set("wp-submit", "Log In")
@@ -279,7 +279,7 @@ func (ArgVar *ArgVar)WordpressLogin()(string,string){
 					fmt.Println("Response Status:", resp.Status)
 					fmt.Println("Response Headers:", resp.Header)
 				}		  
-        }
+               }
     }else if ArgVar.UserList != "" && ArgVar.PassList !=""{
     	UserList , PassList := ArgVar.ListUserWordpress()
     	for IndexU := range UserList {
@@ -322,8 +322,8 @@ func (ArgVar *ArgVar)WordpressLogin()(string,string){
 						csrfToken = bodyStr[start : start+end]
 					}
 				}
-	    		fmt.Println("")
-		    	data := url.Values{}
+	    		        fmt.Println("")
+		        	data := url.Values{}
 				data.Set("log", UserList[IndexU] )
 				data.Set("pwd", PassList[IndexP])
 				data.Set("wp-submit", "Log In")
@@ -357,7 +357,7 @@ func (ArgVar *ArgVar)WordpressLogin()(string,string){
 					fmt.Println("Response Headers:", resp.Header)
 				}
 			}			  
-        }
+              }
     }
     return "",""
 }
