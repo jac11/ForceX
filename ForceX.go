@@ -15,6 +15,10 @@ type ArgVar struct {
     User      string
     Sleep     string
     Wordpress string
+    HTMLUSER  string
+    HTMLPASS  string
+    Cookies   string
+    URL       string
 }
 
 
@@ -28,6 +32,10 @@ func (Argv *ArgVar) ParseArgs() {
     flag.StringVar(&Argv.Port, "Port", "", "Service Port")
     flag.StringVar(&Argv.Sleep, "Sleep", "", "Time to Sleep to wait between Requests")
     flag.StringVar(&Argv.Wordpress, "Wordpress", "", "BruteForce Wordpress login Page")
+    flag.StringVar(&Argv.HTMLUSER, "HTMLUSER", "", "User Filed In HTML def")
+    flag.StringVar(&Argv.HTMLPASS, "HTMLPASS", "", "PassWord Foled In HTML dev")
+    flag.StringVar(&Argv.URL, "URL", "", "Url Login Page admin/..etc")
+    flag.StringVar(&Argv.Cookies,"Cookies" ,"","Web Cookies")
     flag.Parse()
 }
 
@@ -43,7 +51,7 @@ func main() {
         if user != "" && pass != "" {
             fmt.Println("FTP Successful login:", user, pass)
         }else {
-            fmt.Println("FTP No successful login found.")
+            fmt.Println("No successful login found.")
         }
     case "ssh":
         user,pass := ArgVar.SSHConnect()
@@ -52,6 +60,15 @@ func main() {
         }else {
             fmt.Println("SSH No successful login found.")
         }
+    case "wordpress":
+        fmt.Println("Wordpress")
+        user,pass := ArgVar.WordpressLogin()
+        if user != "" && pass != "" {
+            fmt.Println("Wordpress Successful login:", user, pass)
+        }else {
+            fmt.Println("Wordpress No successful login found.")
+        }
+
     } 
    
 }
