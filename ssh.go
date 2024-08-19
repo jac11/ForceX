@@ -18,7 +18,7 @@ func IUsserPAss(ArgVar *ArgVar) ([]string, []string) {
     } else if ArgVar.UserList != "" {
         file, err := os.Open(ArgVar.UserList)
         if err != nil {
-            log.Fatal(err)
+            log.Fatal("[+] ",err)
         }
         defer file.Close()
 
@@ -27,7 +27,7 @@ func IUsserPAss(ArgVar *ArgVar) ([]string, []string) {
             UserName = append(UserName, scanner.Text())
         }
         if err := scanner.Err(); err != nil {
-            log.Fatal(err)
+            log.Fatal("[+] ",err)
         }
     }
 
@@ -36,7 +36,7 @@ func IUsserPAss(ArgVar *ArgVar) ([]string, []string) {
     } else if ArgVar.PassList != "" {
         file, err := os.Open(ArgVar.PassList)
         if err != nil {
-            log.Fatal(err)
+            log.Fatal("[+] ",err)
         }
         defer file.Close()
 
@@ -45,7 +45,7 @@ func IUsserPAss(ArgVar *ArgVar) ([]string, []string) {
             PassWords = append(PassWords, scanner.Text())
         }
         if err := scanner.Err(); err != nil {
-            log.Fatal(err)
+            log.Fatal("[+] ",err)
         }
     }
     return UserName ,PassWords
@@ -64,7 +64,7 @@ func (ArgVar *ArgVar) SSHConnect()(string,string){
 	    }
 	    _ , err := ssh.Dial("tcp", DomainNet , SSHdial)
 	    if err != nil {
-	     	log.Fatal(err)
+	     	log.Fatal("[+] 1",err)
 	    }
    	    return ArgVar.User ,ArgVar.Pass
 
@@ -81,7 +81,7 @@ func (ArgVar *ArgVar) SSHConnect()(string,string){
 	        }
 	        _ , err := ssh.Dial("tcp", DomainNet , SSHdial)
 	        if err != nil {
-	        	fmt.Println("err" ,err , ArgVar.User,PassList[Pass])
+	        	fmt.Println("[+]2 ",err , ArgVar.User,PassList[Pass])
 	        	continue
 	        }else{
 	        	return ArgVar.User ,PassList[Pass]
@@ -102,7 +102,7 @@ func (ArgVar *ArgVar) SSHConnect()(string,string){
 	        }
 	        _ , err := ssh.Dial("tcp", DomainNet , SSHdial)
 	        if err != nil {
-	        	fmt.Println("err" ,err , UserList[User],ArgVar.Pass)
+	        	fmt.Println("[+]3 ",err , UserList[User],ArgVar.Pass)
 	        	continue
 	        }else{
 	        	return UserList[User]  ,ArgVar.Pass
@@ -123,7 +123,7 @@ func (ArgVar *ArgVar) SSHConnect()(string,string){
 		        }
 		        _ , err := ssh.Dial("tcp", DomainNet , SSHdial)
 		        if err != nil {
-		        	fmt.Println("err" ,err , UserList[User],PassList[Pass])
+		        	fmt.Println("[+] 4",err , UserList[User],PassList[Pass])
 		        	continue
 		        }else{
 		        	return UserList[User]  ,PassList[Pass]
