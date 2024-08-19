@@ -3,6 +3,7 @@ package main
 import (
     "flag"
     "fmt"
+    "os"
 )
 
 type ArgVar struct {
@@ -41,10 +42,12 @@ func (Argv *ArgVar) ParseArgs() {
 
 
 func main() {
-     var ArgVar ArgVar 
+    var ArgVar ArgVar 
+    
     Banner:=Logo()
     fmt.Println(Banner)
     ArgVar.ParseArgs()
+    CheckArg(&ArgVar)
     switch ArgVar.Protocol {
     case "ftp":
         user, pass := ArgVar.FTPConnect()
@@ -68,6 +71,17 @@ func main() {
         }else {
             fmt.Println("Wordpress No successful login found.")
         }
+    case "http":
+       fmt.Println("HTTP")
+        user,pass := ArgVar.WordpressLogin()
+        if user != "" && pass != "" {
+            fmt.Println("Wordpress Successful login:", user, pass)
+        }else {
+            fmt.Println("Wordpress No successful login found.")
+        }
+    default:
+       fmt.Println("Usage --Protocol [ssh-ftp-wordprees]")  
+       os.Exit(0)
 
     } 
    

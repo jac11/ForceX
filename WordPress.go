@@ -20,7 +20,7 @@ func (ArgVar *ArgVar)ListUserWordpress()([]string,[]string){
     } else if ArgVar.UserList != "" {
         file, err := os.Open(ArgVar.UserList)
         if err != nil {
-            log.Fatal(err)
+           log.Fatal("[+] ",err)
         }
         defer file.Close()
 
@@ -29,7 +29,7 @@ func (ArgVar *ArgVar)ListUserWordpress()([]string,[]string){
             UserName = append(UserName, scanner.Text())
         }
         if err := scanner.Err(); err != nil {
-            log.Fatal(err)
+            log.Fatal("[+] ",err)
         }
     }
 
@@ -38,7 +38,7 @@ func (ArgVar *ArgVar)ListUserWordpress()([]string,[]string){
     } else if ArgVar.PassList != "" {
         file, err := os.Open(ArgVar.PassList)
         if err != nil {
-            log.Fatal(err)
+            log.Fatal("[+] ",err)
         }
         defer file.Close()
 
@@ -47,7 +47,7 @@ func (ArgVar *ArgVar)ListUserWordpress()([]string,[]string){
             PassWords = append(PassWords, scanner.Text())
         }
         if err := scanner.Err(); err != nil {
-            log.Fatal(err)
+            log.Fatal("[+] ",err)
         }
     }
     return UserName ,PassWords
@@ -169,8 +169,8 @@ func (ArgVar *ArgVar)WordpressLogin()(string,string){
 						csrfToken = bodyStr[start : start+end]
 					}
 				}
-	    		        fmt.Println(index)
-		    	        data := url.Values{}
+	    		fmt.Println(index)
+		    	data := url.Values{}
 				data.Set("log", ArgVar.User)
 				data.Set("pwd", Passlog[index])
 				data.Set("wp-submit", "Log In")
@@ -245,8 +245,8 @@ func (ArgVar *ArgVar)WordpressLogin()(string,string){
 						csrfToken = bodyStr[start : start+end]
 					}
 				}
-	    		        fmt.Println(index)
-		    	        data := url.Values{}
+	    		fmt.Println(index)
+		    	data := url.Values{}
 				data.Set("log", UserLog[index])
 				data.Set("pwd", ArgVar.Pass)
 				data.Set("wp-submit", "Log In")
@@ -322,7 +322,7 @@ func (ArgVar *ArgVar)WordpressLogin()(string,string){
 						csrfToken = bodyStr[start : start+end]
 					}
 				}
-	    		        fmt.Println("")
+	    		    fmt.Println("")
 		        	data := url.Values{}
 				data.Set("log", UserList[IndexU] )
 				data.Set("pwd", PassList[IndexP])
@@ -357,7 +357,7 @@ func (ArgVar *ArgVar)WordpressLogin()(string,string){
 					fmt.Println("Response Headers:", resp.Header)
 				}
 			}			  
-              }
+        }
     }
     return "",""
 }
