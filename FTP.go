@@ -6,6 +6,7 @@ import (
     "net"
     "os"
     "github.com/jlaffaye/ftp"
+    "fmt"
 )
 
 func (ArgVar *ArgVar) FTPConnect() (string, string) {
@@ -54,19 +55,24 @@ func (ArgVar *ArgVar) FTPConnect() (string, string) {
         connect, err := ftp.Dial(DomainNet)
         err = connect.Login(ArgVar.User,ArgVar.Pass)
         if err == nil {
+            fmt.Print("\033[G\033[K")
             return ArgVar.User ,ArgVar.Pass
+        }else{
+            fmt.Print("\033[G\033[K")
+            fmt.Printf("[+] User Can not Login   USERNAME %s  PASSWORD  %s",  ArgVar.User ,ArgVar.Pass)
         }
     
     }else if ArgVar.User !="" && ArgVar.PassList !=""{
         for _, pass = range PassWords {
             connect, err := ftp.Dial(DomainNet)
-            if err != nil {
-                continue
-            }
             defer connect.Quit()
             err = connect.Login(ArgVar.User, pass)
             if err == nil {
+                fmt.Print("\033[G\033[K")
                 return ArgVar.User, pass
+            }else{
+                fmt.Print("\033[G\033[K")
+                fmt.Printf("[+] User Can not Login   USERNAME %s  PASSWORD  %s", ArgVar.User, pass)
             }
         }
 
@@ -74,28 +80,29 @@ func (ArgVar *ArgVar) FTPConnect() (string, string) {
     }else if ArgVar.Pass !="" && ArgVar.UserList!=""{
         for _, user = range UserName {
             connect, err := ftp.Dial(DomainNet)
-            if err != nil {
-                continue
-            }
             defer connect.Quit()
             err = connect.Login(user,ArgVar.Pass)
             if err == nil {
+                fmt.Print("\033[G\033[K")
                 return user, ArgVar.Pass
-            }
+            }else{
+                  fmt.Print("\033[G\033[K")
+                  fmt.Printf("[+] User Can not Login   USERNAME %s  PASSWORD  %s", user, ArgVar.Pass)
+                }
         }
 
     } else if ArgVar.PassList != "" && ArgVar.UserList != "" {
         for _, user := range UserName {
             for _, pass := range PassWords {
                 connect, err := ftp.Dial(DomainNet)
-                if err != nil {
-                    continue
-                }
-                
                 defer connect.Quit()
                 err = connect.Login(user, pass)
                 if err == nil {
+                    fmt.Print("\033[G\033[K")
                     return user, pass
+                }else{
+                  fmt.Print("\033[G\033[K")
+                  fmt.Printf("[+] User Can not Login   USERNAME %s  PASSWORD  %s", user,pass)
                 }
             
             }

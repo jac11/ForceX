@@ -82,7 +82,10 @@ func main() {
             fmt.Println("🥊️ FTP Successful login User      -----------| >", user)
             fmt.Println("🥊️ FTP Successful login Password  -----------| >", pass)
         } else {
-             fmt.Println("⛔️ Status   -----------| >  No successful login found.")
+            fmt.Print("\033[G\033[K")
+            fmt.Println("🚧️ Login Failed")
+            fmt.Println(strings.Repeat("=", 30))
+            fmt.Println("⛔️ Status   -----------| >  No successful login found.")
         }
     case "ssh":
         user, pass := ArgVar.SSHConnect()
@@ -92,6 +95,7 @@ func main() {
             fmt.Println("🥊️ SSH Successful login User      -----------| >", user)
             fmt.Println("🥊️ SSH Successful login Password  -----------| >", pass)
         } else {
+             fmt.Println("🚧️ Login Failed")
              fmt.Println("⛔️ Status   -----------| >  No successful login found.")
         }
     case "wordpress":
@@ -101,10 +105,14 @@ func main() {
             fmt.Println("🥊️ Wordpress Successful login Password  -----------| >", pass)
 
         } else {
+            fmt.Println("🚧️ Login Failed")
+            fmt.Println(strings.Repeat("=", 30))
             fmt.Println("⛔️ Status   -----------| >  No successful login found.")
         }
     default:
+        fmt.Println("💡️ Protocol Error ")
+        fmt.Println(strings.Repeat("=", 30))
         fmt.Println("⛔️ Usage  -----------| > Protocol [ssh-ftp-wordpress]")
-        os.Exit(1)
+        os.Exit(0)
     }
 }
