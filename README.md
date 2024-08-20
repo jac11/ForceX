@@ -32,7 +32,7 @@ This Go application is a versatile brute force attack tool designed to target va
     ```
 3. Build the application:
     ```bash
-    go build -o bruteForceTool
+    go build -o ForceX
     ```
 
 ## Usage
