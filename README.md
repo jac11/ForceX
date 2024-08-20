@@ -42,7 +42,7 @@ This Go application is a versatile brute force attack tool designed to target va
 | Argument      | Description                            |
 |---------------|----------------------------------------|
 | `--Address`   | IP/Domain Target for BruteForce        |
-| `--Protocol`  | Protocol (`http`, `ssh`, `ftp`, etc.)  |
+| `--Protocol`  | Protocol (`ssh`, `ftp`, `wordpress`)  |
 | `--UserList`  | List of user names                     |
 | `--PassList`  | Password list                          |
 | `--User`      | Single username                        |
