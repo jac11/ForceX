@@ -54,7 +54,7 @@ func printInputInfo(Argv *ArgVar) {
     time.Sleep(200 * time.Millisecond)
     if Argv.Pass      != "" {fmt.Println("🎲️ TargetPassword   -----------| > ", Argv.Pass)}
     time.Sleep(200 * time.Millisecond)
-    if Argv.UserList  != "" {fmt.Println("👨‍👨‍👦️ UserList         -----------| > ", Argv.UserList)}
+    if Argv.UserList  != "" {fmt.Println("🃏️ UserList         -----------| > ", Argv.UserList)}
     time.Sleep(200 * time.Millisecond)
     if Argv.PassList  != "" {fmt.Println("📜️ PasswordList     -----------| > ", Argv.PassList)}
     time.Sleep(200 * time.Millisecond)
@@ -75,22 +75,30 @@ func main() {
     switch ArgVar.Protocol {
     case "ftp":
         user, pass := ArgVar.FTPConnect()
+       
         if user != "" && pass != "" {
-            fmt.Println("💰️ FTP Successful login   -----------| > ", user, pass)
+            fmt.Println("\n🥋️ Login successful")
+            fmt.Println(strings.Repeat("=", 30))
+            fmt.Println("🥊️ FTP Successful login User      -----------| >", user)
+            fmt.Println("🥊️ FTP Successful login Password  -----------| >", pass)
         } else {
              fmt.Println("⛔️ Status   -----------| >  No successful login found.")
         }
     case "ssh":
         user, pass := ArgVar.SSHConnect()
         if user != "" && pass != "" {
-            fmt.Println("💰️ SSH Successful login   -----------| > ", user, pass)
+            fmt.Println("\n🥋️ Login successful")
+            fmt.Println(strings.Repeat("=", 30))
+            fmt.Println("🥊️ SSH Successful login User      -----------| >", user)
+            fmt.Println("🥊️ SSH Successful login Password  -----------| >", pass)
         } else {
              fmt.Println("⛔️ Status   -----------| >  No successful login found.")
         }
     case "wordpress":
         user, pass := ArgVar.WordpressLogin()
         if user != "" && pass != "" {
-            fmt.Println("💰️ Wordpress Successful login   -----------| > ", user, pass)
+            fmt.Println("🥊️ Wordpress Successful login User      -----------| >", user)
+            fmt.Println("🥊️ Wordpress Successful login Password  -----------| >", pass)
 
         } else {
             fmt.Println("⛔️ Status   -----------| >  No successful login found.")

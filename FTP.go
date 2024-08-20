@@ -50,15 +50,13 @@ func (ArgVar *ArgVar) FTPConnect() (string, string) {
     var user, pass string
     DomainNet := net.JoinHostPort(ArgVar.Address, ArgVar.Port)
 
-    //argsuser-argspass
     if ArgVar.PassList  == "" && ArgVar.UserList == ""{
         connect, err := ftp.Dial(DomainNet)
         err = connect.Login(ArgVar.User,ArgVar.Pass)
         if err == nil {
             return ArgVar.User ,ArgVar.Pass
         }
-
-    //username -passwordlist    
+    
     }else if ArgVar.User !="" && ArgVar.PassList !=""{
         for _, pass = range PassWords {
             connect, err := ftp.Dial(DomainNet)
@@ -72,7 +70,7 @@ func (ArgVar *ArgVar) FTPConnect() (string, string) {
             }
         }
 
-    //userlist-argpass  
+  
     }else if ArgVar.Pass !="" && ArgVar.UserList!=""{
         for _, user = range UserName {
             connect, err := ftp.Dial(DomainNet)
@@ -85,7 +83,7 @@ func (ArgVar *ArgVar) FTPConnect() (string, string) {
                 return user, ArgVar.Pass
             }
         }
-    //userlist-passwordlist
+
     } else if ArgVar.PassList != "" && ArgVar.UserList != "" {
         for _, user := range UserName {
             for _, pass := range PassWords {

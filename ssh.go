@@ -51,7 +51,6 @@ func IUsserPAss(ArgVar *ArgVar) ([]string, []string) {
     return UserName ,PassWords
  }   
 func (ArgVar *ArgVar) SSHConnect()(string,string){
-    
 	DomainNet := net.JoinHostPort(ArgVar.Address, ArgVar.Port)
 
     if ArgVar.User !="" && ArgVar.Pass !=""{
@@ -81,9 +80,11 @@ func (ArgVar *ArgVar) SSHConnect()(string,string){
 	        }
 	        _ , err := ssh.Dial("tcp", DomainNet , SSHdial)
 	        if err != nil {
-	        	fmt.Println("[+]2 ",err , ArgVar.User,PassList[Pass])
+                fmt.Print("\033[G\033[K")
+	        	fmt.Printf("[+] handshake failed: ssh USERNAME %s  PASSWORD %s", ArgVar.User,PassList[Pass])
 	        	continue
 	        }else{
+                fmt.Print("\033[G\033[K")
 	        	return ArgVar.User ,PassList[Pass]
 	        	break
 	        }
@@ -102,9 +103,11 @@ func (ArgVar *ArgVar) SSHConnect()(string,string){
 	        }
 	        _ , err := ssh.Dial("tcp", DomainNet , SSHdial)
 	        if err != nil {
-	        	fmt.Println("[+]3 ",err , UserList[User],ArgVar.Pass)
+                fmt.Print("\033[G\033[K")
+                fmt.Printf("[+] handshake failed: ssh USERNAME %s  PASSWORD %s" , UserList[User],ArgVar.Pass)
 	        	continue
 	        }else{
+                fmt.Print("\033[G\033[K")
 	        	return UserList[User]  ,ArgVar.Pass
 	        	break
 	        }
@@ -123,9 +126,11 @@ func (ArgVar *ArgVar) SSHConnect()(string,string){
 		        }
 		        _ , err := ssh.Dial("tcp", DomainNet , SSHdial)
 		        if err != nil {
-		        	fmt.Println("[+] 4",err , UserList[User],PassList[Pass])
-		        	continue
+                    fmt.Print("\033[G\033[K")
+		        	fmt.Printf("[+] handshake failed: ssh USERNAME %s  PASSWORD  %s", UserList[User], PassList[Pass])
+                    continue
 		        }else{
+                    fmt.Print("\033[G\033[K")
 		        	return UserList[User]  ,PassList[Pass]
 		        	break
 		        }

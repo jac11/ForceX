@@ -120,7 +120,7 @@ func (ArgVar *ArgVar)WordpressLogin()(string,string){
 			return "",""
 		}
 		if strings.Contains(string(body), "Dashboard") {
-			fmt.Println("Login successful")
+			fmt.Println("🥋️ Login successful")
 			fmt.Println(strings.Repeat("=", 30))
 			return ArgVar.User,ArgVar.Pass
 		} else {
@@ -197,7 +197,7 @@ func (ArgVar *ArgVar)WordpressLogin()(string,string){
 					return "",""
 				}
 				if strings.Contains(string(body), "Dashboard") {
-					fmt.Println("Login successful")
+					fmt.Println("🥋️ Login successful")
 					fmt.Println(strings.Repeat("=", 30))
 					return ArgVar.User,Passlog[index]
 				} else {
@@ -274,7 +274,7 @@ func (ArgVar *ArgVar)WordpressLogin()(string,string){
 					return "",""
 				}
 				if strings.Contains(string(body), "Dashboard") {
-					fmt.Println("Login successful")
+					fmt.Println("🥋️ Login successful")
 					fmt.Println(strings.Repeat("=", 30))
 					return UserLog[index],ArgVar.Pass
 				} else {
@@ -352,7 +352,7 @@ func (ArgVar *ArgVar)WordpressLogin()(string,string){
 					return "",""
 				}
 				if strings.Contains(string(body), "Dashboard") {
-					fmt.Println("Login successful")
+					fmt.Println("🥋️ Login successful")
 					fmt.Println(strings.Repeat("=", 30))
 					return UserList[IndexU] ,PassList[IndexP]
 				} else {
