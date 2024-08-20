@@ -1,5 +1,5 @@
-
-# BruteForce Attack Tool
+# ForceX
+## BruteForce Attack Tool
 
 ## Overview
 
@@ -59,17 +59,17 @@ This Go application is a versatile brute force attack tool designed to target va
 
 #### FTP Brute Force
 ```bash
-./bruteForceTool --Address 192.168.1.1 --Protocol ftp --UserList users.txt --PassList passwords.txt --Port 21 --Sleep 1s
+../ForceX  --Address 192.168.1.1 --Protocol ftp --UserList users.txt --PassList passwords.txt --Port 21 
 ```
 
 #### SSH Brute Force
 ```bash
-./bruteForceTool --Address 192.168.1.2 --Protocol ssh --UserList users.txt --PassList passwords.txt --Port 22 --Sleep 2s
+./ForceX  --Address 192.168.1.2 --Protocol ssh --UserList users.txt --PassList passwords.txt --Port 22 
 ```
 
 #### WordPress Brute Force
 ```bash
-./bruteForceTool --URL http://example.com/wp-login.php --Protocol wordpress --UserList users.txt --PassList passwords.txt --HTMLUSER user_login --HTMLPASS user_pass --Cookies "session=abcd1234" --Sleep 1s
+./ForceX --URL http://example.com/wp-login.php --Protocol wordpress --UserList users.txt --PassList passwords.txt 
 ```
 
 ## Output
