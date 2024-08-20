@@ -59,7 +59,7 @@ func (ArgVar *ArgVar) FTPConnect() (string, string) {
             return ArgVar.User ,ArgVar.Pass
         }else{
             fmt.Print("\033[G\033[K")
-            fmt.Printf("[+] User Can not Login   USERNAME %s  PASSWORD  %s",  ArgVar.User ,ArgVar.Pass)
+            fmt.Printf("❌ User Can not Login   USERNAME %s  PASSWORD  %s",  ArgVar.User ,ArgVar.Pass)
         }
     
     }else if ArgVar.User !="" && ArgVar.PassList !=""{
@@ -72,7 +72,7 @@ func (ArgVar *ArgVar) FTPConnect() (string, string) {
                 return ArgVar.User, pass
             }else{
                 fmt.Print("\033[G\033[K")
-                fmt.Printf("[+] User Can not Login   USERNAME %s  PASSWORD  %s", ArgVar.User, pass)
+                fmt.Printf("❌ User Can not Login   USERNAME %s  PASSWORD  %s", ArgVar.User, pass)
             }
         }
 
@@ -87,7 +87,7 @@ func (ArgVar *ArgVar) FTPConnect() (string, string) {
                 return user, ArgVar.Pass
             }else{
                   fmt.Print("\033[G\033[K")
-                  fmt.Printf("[+] User Can not Login   USERNAME %s  PASSWORD  %s", user, ArgVar.Pass)
+                  fmt.Printf("❌ User Can not Login   USERNAME %s  PASSWORD  %s", user, ArgVar.Pass)
                 }
         }
 
@@ -102,7 +102,7 @@ func (ArgVar *ArgVar) FTPConnect() (string, string) {
                     return user, pass
                 }else{
                   fmt.Print("\033[G\033[K")
-                  fmt.Printf("[+] User Can not Login   USERNAME %s  PASSWORD  %s", user,pass)
+                  fmt.Printf("❌ User Can not Login   USERNAME %s  PASSWORD  %s", user,pass)
                 }
             
             }
