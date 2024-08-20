@@ -225,9 +225,6 @@ Successful login details are clearly displayed with user-friendly icons.
 - This tool is designed for educational purposes only. Unauthorized access to computer systems is illegal and unethical.
 - Use responsibly and ensure you have permission to test the systems you target.
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Contributing
 
