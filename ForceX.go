@@ -95,8 +95,10 @@ func main() {
             fmt.Println("🥊️ SSH Successful login User      -----------| >", user)
             fmt.Println("🥊️ SSH Successful login Password  -----------| >", pass)
         } else {
-             fmt.Println("🚧️ Login Failed")
-             fmt.Println("⛔️ Status   -----------| >  No successful login found.")
+            fmt.Print("\033[G\033[K")
+            fmt.Println("🚧️ Login Failed")
+            fmt.Println(strings.Repeat("=", 30))
+            fmt.Println("⛔️ Status   -----------| >  No successful login found.")
         }
     case "wordpress":
         user, pass := ArgVar.WordpressLogin()
