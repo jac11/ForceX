@@ -325,8 +325,7 @@ func (ArgVar *ArgVar)WordpressLogin()(string,string){
 						csrfToken = bodyStr[start : start+end]
 					}
 				}
-	    		fmt.Println("")
-		        data := url.Values{}
+		                data := url.Values{}
 				data.Set("log", UserList[IndexU] )
 				data.Set("pwd", PassList[IndexP])
 				data.Set("wp-submit", "Log In")
