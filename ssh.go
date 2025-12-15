@@ -7,6 +7,7 @@ import (
     "os"
 	"golang.org/x/crypto/ssh"
 	"fmt"
+	"time"
 )
 
 func IUsserPAss(ArgVar *ArgVar) ([]string, []string) {
@@ -60,6 +61,7 @@ func (ArgVar *ArgVar) SSHConnect()(string,string){
 			ssh.Password(ArgVar.Pass),
 		},
 	    	HostKeyCallback: ssh.InsecureIgnoreHostKey(),
+            Timeout: 2 * time.Second, // Connection timeout
 	    }
 	    _ , err := ssh.Dial("tcp", DomainNet , SSHdial)
 	    if err != nil {
